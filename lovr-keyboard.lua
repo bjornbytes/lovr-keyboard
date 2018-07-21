@@ -1,5 +1,5 @@
 local ffi = require 'ffi'
-local C = ffi.C
+local C = ffi.os == 'Windows' and ffi.load('glfw3') or ffi.C
 
 ffi.cdef [[
   typedef struct GLFWwindow GLFWwindow;
