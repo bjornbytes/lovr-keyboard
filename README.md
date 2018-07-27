@@ -22,6 +22,8 @@ API
 
 - `keyboard.isDown(key)` Returns whether or not the specified key is down.  Currently letters,
   numbers, and 'space' are supported.
+- `lovr.keypressed(key)` Called when a key is pressed.
+- `lovr.keyreleased(key)` Called when a key is released.
 
 License
 ---
