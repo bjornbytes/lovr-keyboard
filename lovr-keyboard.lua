@@ -133,14 +133,6 @@ for k, v in pairs(keymap) do
   keymap[v] = k
 end
 
-local function keyCallback(window, key, scancode, action, mods)
-  if action ~= 2 and keymap[key] then
-    lovr.event.push(action > 0 and 'keypressed' or 'keyreleased', keymap[key])
-  end
-end
-
-C.glfwSetKeyCallback(window, keyCallback)
-
 local keyboard = {}
 
 function keyboard.isDown(key, ...)
@@ -149,5 +141,11 @@ function keyboard.isDown(key, ...)
   assert(keycode and type(keycode) == 'number', 'Unknown key: ' .. key)
   return C.glfwGetKey(window, keycode) == 1 or keyboard.isDown(...)
 end
+
+C.glfwSetKeyCallback(window, function(window, key, scancode, action, mods)
+  if action ~= 2 and keymap[key] then
+    lovr.event.push(action > 0 and 'keypressed' or 'keyreleased', keymap[key])
+  end
+end)
 
 return keyboard
