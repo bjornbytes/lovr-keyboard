@@ -9,7 +9,7 @@ function lovr.keyreleased(key)
 end
 
 function lovr.update(dt)
-  if lovr.keyboard.isDown('space') then
-    print('I just need some space')
+  if lovr.keyboard.isDown('a', 'e', 'i', 'o', 'u') then
+    print('haha stop pressing vowels it tickles')
   end
 end

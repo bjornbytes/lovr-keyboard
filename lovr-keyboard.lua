@@ -143,10 +143,11 @@ C.glfwSetKeyCallback(window, keyCallback)
 
 local keyboard = {}
 
-function keyboard.isDown(key)
-  local keycode = key and keymap[key]
+function keyboard.isDown(key, ...)
+  if not key then return false end
+  local keycode = keymap[key]
   assert(keycode and type(keycode) == 'number', 'Unknown key: ' .. key)
-  return C.glfwGetKey(window, keycode) == 1
+  return C.glfwGetKey(window, keycode) == 1 or keyboard.isDown(...)
 end
 
 return keyboard
