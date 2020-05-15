@@ -4,10 +4,12 @@ local C = ffi.os == 'Windows' and ffi.load('glfw3') or ffi.C
 ffi.cdef [[
   typedef struct GLFWwindow GLFWwindow;
   typedef void(*GLFWkeyfun)(GLFWwindow*, int, int, int, int);
+  typedef void (*GLFWcharfun)(GLFWwindow*, unsigned int);
 
   GLFWwindow* glfwGetCurrentContext(void);
   int glfwGetKey(GLFWwindow* window, int key);
   GLFWkeyfun glfwSetKeyCallback(GLFWwindow* window, GLFWkeyfun callback);
+  GLFWcharfun glfwSetCharCallback(GLFWwindow* window, GLFWcharfun callback);
 ]]
 
 local window = C.glfwGetCurrentContext()
@@ -147,5 +149,9 @@ C.glfwSetKeyCallback(window, function(window, key, scancode, action, mods)
     lovr.event.push(action > 0 and 'keypressed' or 'keyreleased', keymap[key])
   end
 end)
+
+C.glfwSetCharCallback(window, function(window, char)
+    lovr.event.push('textinput', string.char(char))
+  end)
 
 return keyboard
