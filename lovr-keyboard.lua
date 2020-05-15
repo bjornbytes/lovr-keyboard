@@ -131,9 +131,14 @@ local keymap = {
   ['menu'] = 348
 }
 
+local reverse = {}
 for k, v in pairs(keymap) do
-  keymap[v] = k
+  reverse[v] = k
 end
+for k, v in pairs(reverse) do
+  keymap[k] = v
+end
+
 
 local keyboard = {}
 
