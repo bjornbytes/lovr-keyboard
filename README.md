@@ -3,6 +3,10 @@ lovr-keyboard
 
 A keyboard module for LÖVR.
 
+Note: As of LÖVR v0.14.0, there are builtin keyboard events: `lovr.keypressed`, `lovr.keyreleased`,
+and `lovr.textinput`.  This library still provides the `isDown`, `wasPressed`, and `wasReleased`
+functions which can be helpful, but lovr-keyboard is no longer *required* to get keyboard support.
+
 Usage
 ---
 
