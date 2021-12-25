@@ -135,7 +135,8 @@ local keymap = {
 
 local reverse = {}
 for k, v in pairs(keymap) do
-  reverse[v] = k
+  local keycode = v[1]
+  reverse[keycode] = k
 end
 for k, v in pairs(reverse) do
   keymap[k] = v
