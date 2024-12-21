@@ -8,13 +8,13 @@ ffi.cdef [[
   typedef void(*GLFWkeyfun)(GLFWwindow*, int, int, int, int);
   typedef void(*GLFWcharfun)(GLFWwindow*, unsigned int);
 
-  GLFWwindow* glfwGetCurrentContext(void);
+  GLFWwindow* os_get_glfw_window(void);
   int glfwGetKey(GLFWwindow* window, int key);
   GLFWkeyfun glfwSetKeyCallback(GLFWwindow* window, GLFWkeyfun callback);
   GLFWcharfun glfwSetCharCallback(GLFWwindow* window, GLFWcharfun callback);
 ]]
 
-local window = C.glfwGetCurrentContext()
+local window = C.os_get_glfw_window()
 
 local keymap = {
   ['space'] = { 32, 0, 0 },
