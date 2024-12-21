@@ -3,9 +3,8 @@ lovr-keyboard
 
 A keyboard module for LÖVR.
 
-Note: As of LÖVR v0.14.0, there are builtin keyboard events: `lovr.keypressed`, `lovr.keyreleased`,
-and `lovr.textinput`.  This library still provides the `isDown`, `wasPressed`, and `wasReleased`
-functions which can be helpful, but lovr-keyboard is no longer *required* to get keyboard support.
+> **Note**: This library is obsolete.  All of its functionality is present in the `lovr.system` module
+now.
 
 Usage
 ---
@@ -24,7 +23,7 @@ lovr-keyboard can only run on systems where LÖVR uses both LuaJIT and GLFW. If 
 
 ```lua
 if type(jit) == 'table' and lovr.getOS() ~= 'Android' and lovr.getOS() ~= 'Web' then
-	lovr.keyboard = require 'lovr-keyboard'
+  lovr.keyboard = require 'lovr-keyboard'
 end
 ```
 
@@ -33,8 +32,11 @@ API
 
 - `keyboard.isDown(key, ...)` Returns whether any of the specified keys are held down.  The names of
   all the supported keys can be found [here](https://github.com/bjornbytes/lovr-keyboard/blob/master/lovr-keyboard.lua#L15).
+- `keyboard.wasPressed(key, ...)` Returns whether any of the keys were pressed this frame.
+- `keyboard.wasReleased(key, ...)` Returns whether any of the keys were released this frame.
 - `lovr.keypressed(key)` Called when a key is pressed.
 - `lovr.keyreleased(key)` Called when a key is released.
+- `lovr.textinput(text)` Called when characters are entered.
 
 License
 ---
