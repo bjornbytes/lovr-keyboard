@@ -14,7 +14,7 @@ ffi.cdef [[
   GLFWcharfun glfwSetCharCallback(GLFWwindow* window, GLFWcharfun callback);
 ]]
 
-local window = C.os_get_glfw_window()
+local window = ffi.C.os_get_glfw_window()
 
 local keymap = {
   ['space'] = { 32, 0, 0 },
